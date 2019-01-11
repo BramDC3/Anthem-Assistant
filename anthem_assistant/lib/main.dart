@@ -1,6 +1,4 @@
-import 'package:anthem_assistant/fab_bottom_app_bar.dart';
-import 'package:anthem_assistant/fab_with_icons.dart';
-import 'package:anthem_assistant/layout.dart';
+import 'package:anthem_assistant/utils/CustomBottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -10,9 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Anthem Assistant',
-      theme: ThemeData(
-        primaryColor: Color(0xFFed3e4d)
-      ),
+      theme: ThemeData(primaryColor: Color(0xFFed3e4d)),
       home: MyHomePage(title: 'Anthem Assistant'),
       debugShowCheckedModeBanner: false,
     );
@@ -37,9 +33,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
-  void _selectedFab(int index) {
+  void _selectFab() {
     setState(() {
-      _lastSelected = 'FAB: $index';
+      _lastSelected = 'TAB: FAB';
+    });
+  }
+
+  void _selectMenuItem(String menuItem) {
+    setState(() {
+      _lastSelected = 'TAB: $menuItem';
     });
   }
 
@@ -51,9 +53,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton<String>(
-            onSelected: choiceAction,
+            onSelected: _selectMenuItem,
             itemBuilder: (BuildContext context) {
-              
+              return [
+                PopupMenuItem(
+                  value: 'Profile',
+                  child: Text('Profile'),
+                ),
+                PopupMenuItem(
+                  value: 'Settings',
+                  child: Text('Settings'),
+                ),
+              ];
             },
           ),
         ],
@@ -64,45 +75,30 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           style: TextStyle(fontSize: 32.0),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () { _selectFab(); },
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Image.asset('assets/logo_anthem_assistant_white.png'),
+        ),
+        elevation: 2.0,
+        backgroundColor: Color(0xFFed3e4d),
+      ),
       bottomNavigationBar: FABBottomAppBar(
-        centerItemText: 'Personal',
         color: Colors.grey,
-        selectedColor: Colors.red,
+        selectedColor: Color(0xFFed3e4d),
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
+        centerItemText: 'News',
         items: [
-          FABBottomAppBarItem(iconData: Icons.youtube_searched_for, text: 'LFG'),
-          FABBottomAppBarItem(iconData: Icons.group, text: 'Community'),
+          FABBottomAppBarItem(
+              iconData: Icons.youtube_searched_for, text: 'LFG'),
+          FABBottomAppBarItem(iconData: Icons.group, text: 'Social'),
           FABBottomAppBarItem(iconData: Icons.table_chart, text: 'Inventory'),
           FABBottomAppBarItem(iconData: Icons.map, text: 'Map'),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: _buildFab(context),
     );
-  }
-
-  Widget _buildFab(BuildContext context) {
-    final icons = [ Icons.insert_chart, Icons.adb, Icons.format_list_bulleted ];
-    return AnchoredOverlay(
-      showOverlay: true,
-      overlayBuilder: (context, offset) {
-        return CenterAbout(
-          position: Offset(offset.dx, offset.dy - icons.length * 35.0),
-          child: FabWithIcons(
-            icons: icons,
-            onIconTapped: _selectedFab,
-          ),
-        );
-      },
-      child: FloatingActionButton(
-        onPressed: () { },
-        elevation: 2.0,
-      ),
-    );
-  }
-
-  void choiceAction(String choice) {
-    
   }
 }
