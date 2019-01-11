@@ -2,7 +2,7 @@ name: anthem_assistant
 description: A new Flutter project.
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0-dev.9.4 <3.0.0"
 
 dependencies:
   flutter:
@@ -19,9 +19,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icon_anthem_assistant.png"
-  image_path_android: "assets/icon_anthem_assistant.png"
-  image_path_ios: "assets/icon_anthem_assistant.png"
+  image_path: "assets/logo_anthem_assistant_white.png"
   adaptive_icon_background: "#FFED3E4D"
   adaptive_icon_foreground: "assets/icon_anthem_assistant.png"
 
