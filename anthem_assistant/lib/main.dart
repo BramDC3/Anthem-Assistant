@@ -1,4 +1,4 @@
-import 'package:anthem_assistant/widgets/CustomBottomNavigationBar.dart';
+import 'package:anthem_assistant/utils/CustomBottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -33,6 +33,18 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     });
   }
 
+  void _selectFab() {
+    setState(() {
+      _lastSelected = 'TAB: FAB';
+    });
+  }
+
+  void _selectMenuItem(String menuItem) {
+    setState(() {
+      _lastSelected = 'TAB: $menuItem';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +53,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton<String>(
-            onSelected: choiceAction,
-            itemBuilder: (BuildContext context) {},
+            onSelected: _selectMenuItem,
+            itemBuilder: (BuildContext context) {
+              return [
+                PopupMenuItem(
+                  value: 'Profile',
+                  child: Text('Profile'),
+                ),
+                PopupMenuItem(
+                  value: 'Settings',
+                  child: Text('Settings'),
+                ),
+              ];
+            },
           ),
         ],
       ),
@@ -54,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () { _selectFab(); },
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Image.asset('assets/logo_anthem_assistant_white.png'),
@@ -69,7 +92,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         onTabSelected: _selectedTab,
         centerItemText: 'News',
         items: [
-          FABBottomAppBarItem(iconData: Icons.youtube_searched_for, text: 'LFG'),
+          FABBottomAppBarItem(
+              iconData: Icons.youtube_searched_for, text: 'LFG'),
           FABBottomAppBarItem(iconData: Icons.group, text: 'Social'),
           FABBottomAppBarItem(iconData: Icons.table_chart, text: 'Inventory'),
           FABBottomAppBarItem(iconData: Icons.map, text: 'Map'),
@@ -77,6 +101,4 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-
-  void choiceAction(String choice) {}
 }
