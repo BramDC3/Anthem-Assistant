@@ -35,12 +35,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   void _selectFab() {
     setState(() {
+      FABBottomAppBarState.selectedIndex = -1;
       _lastSelected = 'TAB: FAB';
     });
   }
 
   void _selectMenuItem(String menuItem) {
     setState(() {
+      FABBottomAppBarState.selectedIndex = -1;
       _lastSelected = 'TAB: $menuItem';
     });
   }
