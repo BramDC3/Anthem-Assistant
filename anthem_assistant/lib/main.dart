@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey,
-        selectedColor: Colors.red,
+        selectedColor: Color(0xFFed3e4d),
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         centerItemText: 'News',
