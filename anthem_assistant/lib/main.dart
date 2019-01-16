@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void _selectFab() {
-    getUser("lennertbontinck");
+    getUser("anthemgame");
     setState(() {
       FABBottomAppBarState.selectedIndex = -1;
       _lastSelected = 'TAB: FAB';
@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   Future<Null> getUser(String tag) async {
-    String base = '/1.1/users/show.json';
+    String base = '/1.1/statuses/user_timeline.json';
     final response = await _twitterGet(base, [
       ["screen_name", tag],
       ["tweet_mode", "extended"]
