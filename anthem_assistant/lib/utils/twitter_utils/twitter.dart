@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:anthem_assistant/utils/twitter_utils/tweet.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:random_string/random_string.dart';
@@ -61,7 +62,10 @@ class Twitter {
 
     if (response.statusCode == 200) {
       try {
-        return print(response.body);
+        //return User(json.decode(response.body));
+        TweetList tweets = TweetList.fromJson(json.decode(response.body));
+        tweets.tweets.forEach((t) => print(t.text));
+        //print(response.body);
       } catch (e) {
         print(e);
         return null;
