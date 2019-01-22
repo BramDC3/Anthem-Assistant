@@ -17,7 +17,13 @@ class TweetCardList extends StatelessWidget {
               case ConnectionState.none:
               case ConnectionState.active:
               case ConnectionState.waiting:
-                return Center(child: const CircularProgressIndicator());              
+                return Center(
+                  child: CircularProgressIndicator(
+                    valueColor: new AlwaysStoppedAnimation<Color>(
+                      Color(0xFFed3e4d),
+                    ),
+                  ),
+                );
               case ConnectionState.done:
                 if (snapshot.hasData) {
                   var tweets = snapshot.data;

@@ -21,7 +21,7 @@ class NoInternetConnection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 18.0),
           child: FloatingActionButton(
-            backgroundColor: Theme.of(context).primaryColorLight,
+            backgroundColor: Color(0xFFed3e4d),
             child: Icon(Icons.refresh, size: 30.0,),
             onPressed: action,
           ),
