@@ -1,12 +1,14 @@
 import 'dart:convert';
-import 'package:anthem_assistant/utils/twitter_utils/tweet.dart';
+
+import 'package:anthem_assistant/models/twitter/tweet.dart';
+import 'package:anthem_assistant/models/twitter/tweet_list.dart';
 import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:random_string/random_string.dart';
 
-class Twitter {
+class TwitterApi {
 
-  static String generateSignature(String method, String base, List<String> sortedItems) {
+  String _generateSignature(String method, String base, List<String> sortedItems) {
     String param = '';
 
     for (int i = 0; i < sortedItems.length; i++) {
@@ -20,7 +22,7 @@ class Twitter {
     return base64.encode(digest.bytes);
   }
 
-  static Future<http.Response> _twitterGet(String base, List<List<String>> params) async {
+  Future<http.Response> _twitterGet(String base, List<List<String>> params) async {
     String oauthConsumer = 'oauth_consumer_key="${Uri.encodeComponent("1wcUuos5medaRPb0mMI1jhseh")}"';
     String oauthToken = 'oauth_token="${Uri.encodeComponent("67354697-O0My37xTCMntHfp8tIi5tghjIJ2yeWqXNvvWVVwKC")}"';
     String oauthNonce = 'oauth_nonce="${Uri.encodeComponent(randomAlphaNumeric(42))}"';
@@ -45,7 +47,7 @@ class Twitter {
     }
 
     oauthList.sort();
-    String oauthSig = 'oauth_signature="${Uri.encodeComponent(generateSignature("GET", "https://api.twitter.com$base", oauthList))}"';
+    String oauthSig = 'oauth_signature="${Uri.encodeComponent(_generateSignature("GET", "https://api.twitter.com$base", oauthList))}"';
 
     return await http.get(new Uri.https("api.twitter.com", base, paramMap), headers: {
       "Authorization": 'Oauth $oauthConsumer, $oauthNonce, $oauthSig, $oauthMethod, $oauthTime, $oauthToken, $oauthVersion',
@@ -53,7 +55,7 @@ class Twitter {
     }).timeout(Duration(seconds: 15));
   }
 
-  static Future<TweetList> getTweetsFromUser(String tag) async {
+  Future<List<Tweet>> getTweetsFromUser(String tag) async {
     String base = '/1.1/statuses/user_timeline.json';
     final response = await _twitterGet(base, [
       ["screen_name", tag],
@@ -62,7 +64,8 @@ class Twitter {
 
     if (response.statusCode == 200) {
       try {
-        return TweetList.fromJson(json.decode(response.body));
+        var tweetList = TweetList.fromJson(json.decode(response.body));
+        return tweetList.tweets;
       } catch (e) {
         print("An error has occurred: $e");
         return null;

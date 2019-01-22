@@ -1,17 +1,17 @@
-import 'package:anthem_assistant/utils/twitter_utils/twitter.dart';
-import 'package:anthem_assistant/widgets/custom_navigation_bar.dart';
+import 'package:anthem_assistant/views/pages/news_page.dart';
+import 'package:anthem_assistant/views/widgets/main_page/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MainPage extends StatefulWidget {
+  MainPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MainPageState createState() => new _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   String _lastSelected = 'TAB: 0';
 
   void _selectedTab(int index) {
@@ -21,7 +21,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   }
 
   void _selectFab() {
-    Twitter.getTweetsFromUser("anthemgame");
     setState(() {
       FABBottomAppBarState.selectedIndex = -1;
       _lastSelected = 'TAB: FAB';
@@ -60,10 +59,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
         ],
       ),
       body: Center(
-        child: Text(
-          _lastSelected,
-          style: TextStyle(fontSize: 32.0),
-        ),
+        child: NewsPage(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -93,5 +89,4 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
       ),
     );
   }
-
 }

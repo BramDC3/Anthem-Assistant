@@ -17,6 +17,7 @@ dev_dependencies:
   flutter_launcher_icons: "^0.7.0"
   http: ^0.12.0+1
   random_string: ^0.0.2
+  scoped_model: ^1.0.1
 
 flutter_icons:
   android: true
