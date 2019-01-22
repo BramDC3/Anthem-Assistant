@@ -53,7 +53,7 @@ class Twitter {
     }).timeout(Duration(seconds: 15));
   }
 
-  static Future<Null> getTweetsFromUser(String tag) async {
+  static Future<TweetList> getTweetsFromUser(String tag) async {
     String base = '/1.1/statuses/user_timeline.json';
     final response = await _twitterGet(base, [
       ["screen_name", tag],
@@ -62,17 +62,13 @@ class Twitter {
 
     if (response.statusCode == 200) {
       try {
-        //return User(json.decode(response.body));
-        TweetList tweets = TweetList.fromJson(json.decode(response.body));
-        tweets.tweets.forEach((t) => print(t.text));
-        //print(response.body);
+        return TweetList.fromJson(json.decode(response.body));
       } catch (e) {
-        print(e);
+        print("An error has occurred: $e");
         return null;
       }
     } else {
-      print("Error retrieving user");
-      print(response.body);
+      print("Error retrieving tweets: ${response.body}");
       return null;
     }
   }
