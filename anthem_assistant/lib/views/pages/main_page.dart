@@ -1,5 +1,6 @@
 import 'package:anthem_assistant/views/pages/news_page.dart';
 import 'package:anthem_assistant/views/widgets/main_page/custom_navigation_bar.dart';
+import 'package:anthem_assistant/views/widgets/nointernetconnection.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,25 +13,44 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  String _lastSelected = 'TAB: 0';
+  int _currentIndex = 4;
+  final List<Widget> children = [
+    NoInternetConnection(),
+    NoInternetConnection(),
+    NoInternetConnection(),
+    NoInternetConnection(),
+    NewsPage(),
+    NoInternetConnection(),
+    NoInternetConnection(),
+  ];
 
   void _selectedTab(int index) {
     setState(() {
-      _lastSelected = 'TAB: $index';
+      _currentIndex = index;
     });
   }
 
   void _selectFab() {
     setState(() {
       FABBottomAppBarState.selectedIndex = -1;
-      _lastSelected = 'TAB: FAB';
+      _currentIndex = 4;
     });
   }
 
   void _selectMenuItem(String menuItem) {
     setState(() {
       FABBottomAppBarState.selectedIndex = -1;
-      _lastSelected = 'TAB: $menuItem';
+      switch (menuItem) {
+        case 'Profile':
+          _currentIndex = 5;
+          break;
+        case 'Settings':
+          _currentIndex = 6;
+          break;
+        default:
+          _currentIndex = 4;
+          break;
+      }
     });
   }
 
@@ -59,7 +79,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         ],
       ),
       body: Center(
-        child: NewsPage(),
+        child: children[_currentIndex],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(

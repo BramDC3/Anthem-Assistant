@@ -17,6 +17,10 @@ class TweetCard extends StatelessWidget {
       child: tweet.entityList.mediaList.urls.isNotEmpty
           ? CachedNetworkImage(
               imageUrl: tweet.entityList.mediaList.urls.first,
+              errorWidget: Image.asset(
+                'assets/default_tweet_image.jpg',
+                fit: BoxFit.fitWidth,
+              ),
               fit: BoxFit.fitWidth,
             )
           : Image.asset(
