@@ -18,6 +18,9 @@ dev_dependencies:
   http: ^0.12.0+1
   random_string: ^0.0.2
   scoped_model: ^1.0.1
+  intl: ^0.15.7
+  url_launcher: ^4.0.3
+  cached_network_image: ^0.5.1
 
 flutter_icons:
   android: true
@@ -32,3 +35,5 @@ flutter:
   assets:
     - assets/logo_anthem_assistant_white.png
     - assets/icon_anthem_assistant.png
+    - assets/anthem_logo_twitter.jpg
+    - assets/default_tweet_image.jpg

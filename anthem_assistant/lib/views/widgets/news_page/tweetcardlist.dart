@@ -27,12 +27,18 @@ class TweetCardList extends StatelessWidget {
               case ConnectionState.done:
                 if (snapshot.hasData) {
                   var tweets = snapshot.data;
-                  return ListView.builder(
-                    itemCount: tweets == null ? 0 : tweets.length,
-                    itemBuilder: (_, int index) {
-                      var tweet = tweets[index];
-                      return TweetCard(tweet: tweet);
-                    },
+                  return Padding(
+                    padding: EdgeInsets.all(10),
+                    child: ListView.builder(
+                      itemCount: tweets == null ? 0 : tweets.length,
+                      itemBuilder: (_, int index) {
+                        var tweet = tweets[index];
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 8),
+                          child: TweetCard(tweet: tweet),
+                        );
+                      },
+                    ),
                   );
                 } else if (snapshot.hasError) {
                   return NoInternetConnection(

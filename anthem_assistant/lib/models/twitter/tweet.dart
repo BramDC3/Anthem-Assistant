@@ -1,5 +1,5 @@
 import 'package:anthem_assistant/models/twitter/entity_list.dart';
-import 'package:anthem_assistant/utils/datetime_util.dart';
+import 'package:anthem_assistant/utils/datetime_utils.dart';
 
 class Tweet {
   final String id, text;
@@ -17,7 +17,7 @@ class Tweet {
     return new Tweet(
       id: json['id_str'],
       text: json['full_text'],
-      createdAt: DateTimeUtil.convertToDateTime(json['created_at']),
+      createdAt: DateTimeUtils.convertToDateTime(json['created_at']),
       entityList: EntityList.fromJson(json['entities']),
     );
   }

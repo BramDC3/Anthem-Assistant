@@ -11,6 +11,9 @@ class TweetList {
     List<Tweet> tweets = new List<Tweet>();
     tweets = json.map((t) => Tweet.fromJson(t)).toList();
 
+    // Used to get the data of the first tweet for research purposes.
+    // (json.first as Map<String, dynamic>).keys.forEach((k) => print("$k: ${(json.first as Map<String, dynamic>)[k]}"));
+
     return new TweetList(
       tweets: tweets,
     );
