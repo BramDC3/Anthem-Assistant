@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatelessWidget {
@@ -7,6 +8,9 @@ class AboutPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("About"),
         centerTitle: true,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? ColorConstants.primaryColorDark
+            : ColorConstants.accentColor,
       ),
       body: Container(
         alignment: Alignment.topCenter,

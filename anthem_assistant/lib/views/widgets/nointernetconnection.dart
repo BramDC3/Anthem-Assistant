@@ -10,7 +10,7 @@ class NoInternetConnection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[        
+      children: <Widget>[
         Text(
           'Connect to the internet & refresh',
           style: TextStyle(
@@ -22,8 +22,12 @@ class NoInternetConnection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 18.0),
           child: FloatingActionButton(
-            backgroundColor: ColorConstants.primaryColorRed,
-            child: Icon(Icons.refresh, size: 30.0,),
+            backgroundColor: ColorConstants.accentColor,
+            foregroundColor: ColorConstants.accentColorDark,
+            child: Icon(
+              Icons.refresh,
+              size: 30.0,
+            ),
             onPressed: action,
           ),
         ),

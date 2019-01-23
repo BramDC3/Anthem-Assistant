@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:flutter/material.dart';
 
 class FABBottomAppBarItem {
@@ -14,7 +15,6 @@ class FABBottomAppBar extends StatefulWidget {
     this.iconSize: 24.0,
     this.backgroundColor,
     this.color,
-    this.selectedColor,
     this.notchedShape,
     this.onTabSelected,
   }) {
@@ -26,7 +26,6 @@ class FABBottomAppBar extends StatefulWidget {
   final double iconSize;
   final Color backgroundColor;
   final Color color;
-  final Color selectedColor;
   final NotchedShape notchedShape;
   final ValueChanged<int> onTabSelected;
 
@@ -77,7 +76,12 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
             SizedBox(height: widget.iconSize),
             Text(
               widget.centerItemText ?? '',
-              style: TextStyle(color: widget.color),
+              style: TextStyle(
+                  color: selectedIndex == -1
+                      ? (Theme.of(context).brightness == Brightness.dark
+                          ? ColorConstants.accentColorDark
+                          : ColorConstants.accentColor)
+                      : widget.color),
             ),
           ],
         ),
@@ -90,7 +94,11 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
     int index,
     ValueChanged<int> onPressed,
   }) {
-    Color color = selectedIndex == index ? widget.selectedColor : widget.color;
+    Color color = selectedIndex == index
+        ? (Theme.of(context).brightness == Brightness.dark
+            ? ColorConstants.accentColorDark
+            : ColorConstants.accentColor)
+        : widget.color;
     return Expanded(
       child: SizedBox(
         height: widget.height,
