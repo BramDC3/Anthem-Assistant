@@ -1,8 +1,12 @@
 import 'package:anthem_assistant/constants/colorconstants.dart';
+import 'package:anthem_assistant/views/pages/inventory_page.dart';
+import 'package:anthem_assistant/views/pages/lfg_page.dart';
+import 'package:anthem_assistant/views/pages/map_page.dart';
 import 'package:anthem_assistant/views/pages/news_page.dart';
+import 'package:anthem_assistant/views/pages/profile_page.dart';
 import 'package:anthem_assistant/views/pages/settings_page.dart';
+import 'package:anthem_assistant/views/pages/social_page.dart';
 import 'package:anthem_assistant/views/widgets/main_page/custom_navigation_bar.dart';
-import 'package:anthem_assistant/views/widgets/nointernetconnection.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,12 +21,12 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   int _currentIndex = 4;
   final List<Widget> children = [
-    NoInternetConnection(),
-    NoInternetConnection(),
-    NoInternetConnection(),
-    NoInternetConnection(),
+    LFGPage(),
+    SocialPage(),
+    InventoryPage(),
+    MapPage(),
     NewsPage(),
-    NoInternetConnection(),
+    ProfilePage(),
     SettingsPage(),
   ];
 
