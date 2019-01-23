@@ -2,7 +2,6 @@ import 'package:anthem_assistant/models/twitter/tweet.dart';
 import 'package:anthem_assistant/utils/datetime_utils.dart';
 import 'package:anthem_assistant/utils/website_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class TweetCard extends StatelessWidget {
