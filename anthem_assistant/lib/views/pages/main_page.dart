@@ -41,7 +41,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   void _selectMenuItem(String menuItem) {
     setState(() {
-      FABBottomAppBarState.selectedIndex = -1;
+      FABBottomAppBarState.selectedIndex = -2;
       switch (menuItem) {
         case 'Profile':
           _currentIndex = 5;
@@ -62,6 +62,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? ColorConstants.primaryColorDark
+            : ColorConstants.accentColor,
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: _selectMenuItem,
@@ -93,11 +96,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           child: Image.asset('assets/logo_anthem_assistant_white.png'),
         ),
         elevation: 2.0,
-        backgroundColor: ColorConstants.primaryColorRed,
+        backgroundColor: ColorConstants.accentColor,
       ),
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey,
-        selectedColor: ColorConstants.primaryColorRed,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         centerItemText: 'News',

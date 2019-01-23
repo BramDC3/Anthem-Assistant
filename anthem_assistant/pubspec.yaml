@@ -21,6 +21,7 @@ dev_dependencies:
   intl: ^0.15.7
   url_launcher: ^4.0.3
   cached_network_image: ^0.5.1
+  dynamic_theme: ^1.0.0
 
 flutter_icons:
   android: true

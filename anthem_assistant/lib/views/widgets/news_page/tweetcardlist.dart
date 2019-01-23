@@ -21,7 +21,7 @@ class TweetCardList extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor: new AlwaysStoppedAnimation<Color>(
-                      ColorConstants.primaryColorRed,
+                      ColorConstants.accentColor,
                     ),
                   ),
                 );
@@ -29,13 +29,13 @@ class TweetCardList extends StatelessWidget {
                 if (snapshot.hasData) {
                   var tweets = snapshot.data;
                   return Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(12),
                     child: ListView.builder(
                       itemCount: tweets == null ? 0 : tweets.length,
                       itemBuilder: (_, int index) {
                         var tweet = tweets[index];
                         return Padding(
-                          padding: EdgeInsets.only(bottom: 8),
+                          padding: EdgeInsets.only(bottom: 12),
                           child: TweetCard(tweet: tweet),
                         );
                       },

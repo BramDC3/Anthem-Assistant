@@ -1,6 +1,7 @@
 import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:anthem_assistant/utils/website_utils.dart';
 import 'package:anthem_assistant/views/pages/about_page.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -9,8 +10,35 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool _switchValue = false;
+
+  void _setSwitchState() async {
+    if (Theme.of(context).brightness == Brightness.dark)
+      setState(() {
+        _switchValue = true;
+      });
+    else
+      setState(() {
+        _switchValue = false;
+      });
+  }
+
+  void _changeTheme() {
+    DynamicTheme.of(context).setBrightness(
+        Theme.of(context).brightness == Brightness.dark
+            ? Brightness.light
+            : Brightness.dark);
+  }
+
   Future _openAnthemSubreddit() async {
     WebsiteUtils.openWebPage("https://www.reddit.com/r/AnthemTheGame/");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    _setSwitchState();
   }
 
   @override
@@ -19,10 +47,7 @@ class _SettingsPageState extends State<SettingsPage> {
       children: <Widget>[
         Container(
           child: ListTile(
-            leading: IconTheme(
-              data: IconThemeData(color: ColorConstants.primaryColorRed),
-              child: Icon(Icons.info),
-            ),
+            leading: Icon(Icons.info),
             trailing: Icon(Icons.arrow_forward_ios),
             title: Text('About'),
             onTap: () {
@@ -40,10 +65,7 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         Container(
           child: ListTile(
-            leading: IconTheme(
-              data: IconThemeData(color: ColorConstants.primaryColorRed),
-              child: Icon(Icons.public),
-            ),
+            leading: Icon(Icons.public),
             trailing: Icon(Icons.arrow_forward_ios),
             title: Text('Anthem subreddit'),
             onTap: () {
@@ -58,26 +80,23 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
         Container(
           child: ListTile(
-            leading: IconTheme(
-              data: IconThemeData(color: ColorConstants.primaryColorRed),
-              child: Icon(Icons.brightness_medium),
-            ),
+            leading: Icon(Icons.brightness_medium),
             trailing: Switch(
-              activeColor: ColorConstants.primaryColorRed,
-              value: true,
+              activeColor: ColorConstants.accentColor,
+              value: _switchValue,
               onChanged: (bool newValue) {
                 setState(() {
-                  //_switchValue = newValue;
+                  _switchValue = newValue;
                 });
-                //_changeBrightnessAndColor();
+                _changeTheme();
               },
             ),
             title: Text('Dark mode'),
             onTap: () {
               setState(() {
-                //_switchValue = !_switchValue;
+                _switchValue = !_switchValue;
               });
-              //_changeBrightnessAndColor();
+              _changeTheme();
             },
           ),
           decoration: BoxDecoration(
