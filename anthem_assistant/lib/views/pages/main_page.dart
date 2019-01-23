@@ -1,4 +1,6 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:anthem_assistant/views/pages/news_page.dart';
+import 'package:anthem_assistant/views/pages/settings_page.dart';
 import 'package:anthem_assistant/views/widgets/main_page/custom_navigation_bar.dart';
 import 'package:anthem_assistant/views/widgets/nointernetconnection.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     NoInternetConnection(),
     NewsPage(),
     NoInternetConnection(),
-    NoInternetConnection(),
+    SettingsPage(),
   ];
 
   void _selectedTab(int index) {
@@ -91,11 +93,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           child: Image.asset('assets/logo_anthem_assistant_white.png'),
         ),
         elevation: 2.0,
-        backgroundColor: Color(0xFFed3e4d),
+        backgroundColor: ColorConstants.primaryColorRed,
       ),
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey,
-        selectedColor: Color(0xFFed3e4d),
+        selectedColor: ColorConstants.primaryColorRed,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         centerItemText: 'News',

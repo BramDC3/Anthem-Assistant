@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:anthem_assistant/views/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Anthem Assistant',
-      theme: ThemeData(primaryColor: Color(0xFFed3e4d)),
+      theme: ThemeData(primaryColor: ColorConstants.primaryColorRed),
       home: MainPage(title: 'Anthem Assistant'),
       debugShowCheckedModeBanner: false,
     );

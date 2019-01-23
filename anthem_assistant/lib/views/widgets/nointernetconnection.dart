@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:flutter/material.dart';
 
 class NoInternetConnection extends StatelessWidget {
@@ -21,7 +22,7 @@ class NoInternetConnection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 18.0),
           child: FloatingActionButton(
-            backgroundColor: Color(0xFFed3e4d),
+            backgroundColor: ColorConstants.primaryColorRed,
             child: Icon(Icons.refresh, size: 30.0,),
             onPressed: action,
           ),
