@@ -26,7 +26,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/logo_anthem_assistant_white.png"
+  image_path: "assets/icon_anthem_assistant_ios.png"
   adaptive_icon_background: "#FFED3E4D"
   adaptive_icon_foreground: "assets/icon_anthem_assistant.png"
 
@@ -38,3 +38,4 @@ flutter:
     - assets/icon_anthem_assistant.png
     - assets/anthem_logo_twitter.jpg
     - assets/default_tweet_image.jpg
+    - assets/icon_anthem_assistant_ios.png

@@ -11,18 +11,18 @@ class MyApp extends StatelessWidget {
     return new DynamicTheme(
       defaultBrightness: Brightness.light,
       data: (brightness) => new ThemeData(
-        primarySwatch: Colors.red,
-        primaryColor: ColorConstants.accentColor,
-        brightness: brightness,
-      ),
+            primarySwatch: Colors.red,
+            primaryColor: ColorConstants.accentColor,
+            brightness: brightness,
+          ),
       themedWidgetBuilder: (context, theme) {
         return new MaterialApp(
           title: 'Anthem Assistant',
           theme: theme,
           home: MainPage(title: 'Anthem Assistant'),
-      debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
         );
-      }
+      },
     );
   }
 }
