@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:anthem_assistant/models/twitter/tweet.dart';
 import 'package:anthem_assistant/viewmodels/news_page_viewmodel.dart';
 import 'package:anthem_assistant/views/widgets/news_page/tweetcard.dart';
@@ -20,7 +21,7 @@ class TweetCardList extends StatelessWidget {
                 return Center(
                   child: CircularProgressIndicator(
                     valueColor: new AlwaysStoppedAnimation<Color>(
-                      Color(0xFFed3e4d),
+                      ColorConstants.primaryColorRed,
                     ),
                   ),
                 );
