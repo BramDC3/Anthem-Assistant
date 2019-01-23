@@ -1,0 +1,41 @@
+name: anthem_assistant
+description: A new Flutter project.
+
+environment:
+  sdk: ">=2.1.0-dev.9.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_launcher_icons: "^0.7.0"
+  http: ^0.12.0+1
+  random_string: ^0.0.2
+  scoped_model: ^1.0.1
+  intl: ^0.15.7
+  url_launcher: ^4.0.3
+  cached_network_image: ^0.5.1
+  dynamic_theme: ^1.0.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon_anthem_assistant_ios.png"
+  adaptive_icon_background: "#FFED3E4D"
+  adaptive_icon_foreground: "assets/icon_anthem_assistant.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo_anthem_assistant_white.png
+    - assets/icon_anthem_assistant.png
+    - assets/anthem_logo_twitter.jpg
+    - assets/default_tweet_image.jpg
+    - assets/icon_anthem_assistant_ios.png
