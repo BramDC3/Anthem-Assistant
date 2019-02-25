@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("About"),
+        title: Text("About this app"),
         centerTitle: true,
         backgroundColor: Theme.of(context).brightness == Brightness.dark
             ? ColorConstants.primaryColorDark
@@ -21,7 +21,7 @@ class AboutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Image.asset('assets/logo_anthem_assistant_white.png',
-                    scale: 1.2),
+                    scale: 1.4),
                 SizedBox(height: 8),
                 Text("Anthem Assistant", style: TextStyle(fontSize: 26)),
                 SizedBox(height: 24),
@@ -39,7 +39,17 @@ class AboutPage extends StatelessWidget {
                     "the Anthem Fan Art Kit were used. All rights in the Fansite Materials belong to Electronic " +
                     "ArtsInc. (“EA”), its affiliated companies or licensors."),
                 SizedBox(height: 18),
-                Text("Copyright © 2019 | Bram De Coninck")
+                Text("Copyright © 2019 | Bram De Coninck"),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset('assets/anthem_pc_lfg_logo.jpg',
+                        width: 30, height: 30),
+                    SizedBox(width: 6),
+                    Text("Partnered with Anthem PC LFG"),
+                  ],
+                ),
               ],
             ),
           ),

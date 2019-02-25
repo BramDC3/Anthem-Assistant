@@ -49,7 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
           child: ListTile(
             leading: Icon(Icons.info),
             trailing: Icon(Icons.arrow_forward_ios),
-            title: Text('About'),
+            title: Text('About this app'),
             onTap: () {
               Navigator.push(
                 context,
