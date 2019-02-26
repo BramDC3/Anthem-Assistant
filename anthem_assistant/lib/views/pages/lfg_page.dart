@@ -1,3 +1,4 @@
+import 'package:anthem_assistant/constants/colorconstants.dart';
 import 'package:anthem_assistant/utils/website_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class _LFGPageState extends State<LFGPage> {
               onPressed: () {
                 WebsiteUtils.openWebPage("https://discord.gg/wv73eu7");
               },
+              color: ColorConstants.accentColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   20.0,

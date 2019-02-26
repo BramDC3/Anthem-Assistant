@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("About this app"),
+        title: Text("About the app"),
         centerTitle: true,
         backgroundColor: Theme.of(context).brightness == Brightness.dark
             ? ColorConstants.primaryColorDark
@@ -40,13 +40,13 @@ class AboutPage extends StatelessWidget {
                     "ArtsInc. (“EA”), its affiliated companies or licensors."),
                 SizedBox(height: 18),
                 Text("Copyright © 2019 | Bram De Coninck"),
-                SizedBox(height: 8),
+                SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Image.asset('assets/anthem_pc_lfg_logo.jpg',
                         width: 30, height: 30),
-                    SizedBox(width: 6),
+                    SizedBox(width: 8),
                     Text("Partnered with Anthem PC LFG"),
                   ],
                 ),
