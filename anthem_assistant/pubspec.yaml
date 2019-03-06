@@ -22,6 +22,7 @@ dev_dependencies:
   url_launcher: ^4.0.3
   cached_network_image: ^0.5.1
   dynamic_theme: ^1.0.0
+  photo_view: ^0.2.1
 
 flutter_icons:
   android: true
@@ -40,3 +41,4 @@ flutter:
     - assets/default_tweet_image.jpg
     - assets/icon_anthem_assistant_ios.png
     - assets/anthem_pc_lfg_logo.jpg
+    - assets/anthem_map_v3-min.jpg

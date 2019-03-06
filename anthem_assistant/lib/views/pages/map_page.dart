@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class MapPage extends StatefulWidget {
   @override
@@ -8,15 +9,11 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(32),
-        child: Text("I think it would be awesome to have a " +
-        "dynamic map of Anthem on which you can interesting places, " +
-        "'hidden' objects/codex entries, timers for word events " +
-        "and inventory resets, ... We'll see what's possible " +
-        "with the Anthem Api, but even without it, I'll still " +
-        "look into this."),
+    return Container(
+      child: PhotoView(
+        minScale: PhotoViewComputedScale.contained,
+        maxScale: 2.0,
+        imageProvider: AssetImage("assets/anthem_map_v3-min.jpg"),
       ),
     );
   }
